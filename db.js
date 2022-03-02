@@ -19,4 +19,4 @@ sequelize.sync({force : false})
 })
 
 
-module.exports = pelicula;
+module.exports = pelicula;  

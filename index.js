@@ -6,7 +6,8 @@ const bodyParser = require('body-parser'); // enviar objetos asociados a la peti
 const app = express();
 
 app.use(bodyParser.json()); // lanzar un middleware
-app.use(bodyParser.urlencoded({extended: true })); // codificacion de la url
+app.use(bodyParser.urlencoded({extended: true })); // codificacion de la url 
+
 app.use(express.json());
 
 const PORT = config.module.PORT || 3000

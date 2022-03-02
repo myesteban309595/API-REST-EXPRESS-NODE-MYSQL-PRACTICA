@@ -5,6 +5,8 @@ const bodyParser = require('body-parser'); // enviar objetos asociados a la peti
 
 const app = express();
 
+require('./db');
+
 app.use(bodyParser.json()); // lanzar un middleware
 app.use(bodyParser.urlencoded({extended: true })); // codificacion de la url 
 

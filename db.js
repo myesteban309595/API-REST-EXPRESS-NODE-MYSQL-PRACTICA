@@ -2,9 +2,21 @@
 
 const Sequelize = require('sequelize')
 
-const sequelize = new Sequelize('database', 'username', 'password', {
+const peliculaModelo = require('./models/peliculas');
 
-    host: 'remotemysql.com',  //! server
+const sequelize = new Sequelize('mybasededatos', 'root', 'root', {   //! aqui debo llenar estos datos para conectar a la base de datos, si no amrca error
+
+    host: 'localhost',  //! server
     dialect: 'mysql'
-    
+
 })
+
+const pelicula = peliculaModelo(sequelize, Sequelize)
+
+sequelize.sync({force : false})
+.then(()=> {
+    console.log("tablas sincronzadas");
+})
+
+
+module.exports = pelicula;

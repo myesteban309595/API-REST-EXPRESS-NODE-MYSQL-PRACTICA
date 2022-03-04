@@ -5,7 +5,8 @@ const config = require('./config')
 
 require('dotenv').config();
 
-const peliculaModel = require('./models/peliculas');
+const peliculaModel = require('./models/peliculas.models');
+const usuariosModel = require('./models/users.models')
 
 const USER_DB = config.module.USER_DB // root
 const PASSWORD_DB = config.module.PASSWORD_DB; // root
@@ -22,6 +23,7 @@ const sequelize = new Sequelize('basedatosprueba', USER_DB , PASSWORD_DB, {   //
 })
 
 const PELI = peliculaModel(sequelize, Sequelize)
+const User = usuariosModel(sequelize, Sequelize)
 
 sequelize.sync({force : false})
 .then(()=> {
@@ -32,3 +34,4 @@ sequelize.sync({force : false})
 
 
 module.exports = PELI;  
+module.exports = User;  

@@ -16,7 +16,31 @@ Proute.get('/', async (req,res)=>{
 
 })
 
-Proute.post('/', (req,res) => {
+Proute.post('/', async (req,res) => {
+
+    const pelicula = await PELI.create(req.body); // llamamos del body la informacion
+    res.json('se ha creado una nueva pelicula')
+    console.log(('se ha agregado una pelicula ').green);
+});
+
+Proute.put('/:idPeli', async (req,res) => {
+
+    await PELI.update(req.body, {
+        where: {id : req.params.idPeli}
+    })
+
+    console.log((`se ha actualizado la pelicula`).green);
+    res.json('se ha actualizado la pelicula')
+});
+
+Proute.delete('/:idPeli', async (req,res) => {
+
+    await PELI.destroy({
+        where: {id : req.params.idPeli}
+    })
+
+    console.log((`se ha eliminado la pelicula`).red);
+    res.json('se ha eliminado la pelicula')
 });
 
 module.exports = Proute;
